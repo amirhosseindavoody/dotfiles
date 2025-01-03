@@ -37,4 +37,3 @@ chmod +x ${HOME}/.antigen/antigen.zsh
 mkdir -p ${HOME}/.zsh/custom-scripts
 just --completions zsh > ${HOME}/.zsh/custom-scripts/_just
 
-exec zsh
