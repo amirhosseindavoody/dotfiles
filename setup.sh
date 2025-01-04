@@ -26,14 +26,12 @@ rsync --exclude ".git/" \
   --exclude "README.md" \
   --exclude "LICENSE" \
   -avh --no-perms . ${HOME};
-  
-
-# Install Antigen for Zsh plugin management
-mkdir -p ${HOME}/.antigen
-curl -L git.io/antigen > ${HOME}/.antigen/antigen.zsh
-chmod +x ${HOME}/.antigen/antigen.zsh
 
 # Enable autocompeletion for just taskrunner.
 mkdir -p ${HOME}/.zsh/custom-scripts
 just --completions zsh > ${HOME}/.zsh/custom-scripts/_just
 
+# Install Antigen for Zsh plugin management
+mkdir -p ${HOME}/.antigen
+curl -L git.io/antigen > ${HOME}/.antigen/antigen.zsh
+chmod +x ${HOME}/.antigen/antigen.zsh
