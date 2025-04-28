@@ -7,6 +7,8 @@ set -euo pipefail
 if ! command -v curl &> /dev/null; then
     echo "curl is not installed. Installing curl..."
     sudo apt-get update && sudo apt-get install -y curl
+
+    echo "curl: " $(which curl)
 fi
 
 export UV_CACHE_DIR="$(pwd)/.cache"
