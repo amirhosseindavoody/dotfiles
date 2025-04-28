@@ -3,13 +3,15 @@
 # For debug uncomment the following line.
 set -euo pipefail
 
-# Check if curl is installed
-if ! command -v curl &> /dev/null; then
-    echo "curl is not installed. Installing curl..."
-    sudo apt-get update && sudo apt-get install -y curl
+export DEBIAN_FRONTEND=noninteractive
 
-    echo "curl: " $(which curl)
-fi
+apt-get update
+
+apt-get install -y \
+    curl \
+    -o Dpkg::Options::="--force-confold"
+
+apt-get clean
 
 export UV_CACHE_DIR="$(pwd)/.cache"
 export UV_PYTHON_INSTALL_DIR="$(pwd)/.python"
