@@ -8,6 +8,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 
 apt-get install -y \
+    zsh \
     curl \
     -o Dpkg::Options::="--force-confold"
 
