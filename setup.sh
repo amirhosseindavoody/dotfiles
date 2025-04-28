@@ -1,37 +1,17 @@
 #!/usr/bin/env bash
 
-export DEBIAN_FRONTEND=noninteractive
+# For debug uncomment the following line.
+set -euo pipefail
 
-apt-get update
+export UV_CACHE_DIR="$(pwd)/.cache"
+export UV_PYTHON_INSTALL_DIR="$(pwd)/.python"
 
-apt-get install -y \
-    zsh \
-    git \
-    gnupg \
-    curl \
-    rsync \
-    just \
-    -o Dpkg::Options::="--force-confold"
+if [ "$#" -eq 2 ]; then
+    ./uv run src/init.py --config "$1" --workspace "$2"
+else
+    echo "Error: you must pass the config yaml file." >&2
+    exit 1
+fi
 
-apt-get clean
-
-cd "$(dirname "${BASH_SOURCE}")";
-
-git pull origin main;
-
-rsync --exclude ".git/" \
-  --exclude ".DS_Store" \
-  --exclude ".osx" \
-  --exclude "setup.sh" \
-  --exclude "README.md" \
-  --exclude "LICENSE" \
-  -avh --no-perms . ${HOME};
-
-# Enable autocompeletion for just taskrunner.
-mkdir -p ${HOME}/.zsh/custom-scripts
-just --completions zsh > ${HOME}/.zsh/custom-scripts/_just
-
-# Install Antigen for Zsh plugin management
-mkdir -p ${HOME}/.antigen
-curl -L git.io/antigen > ${HOME}/.antigen/antigen.zsh
-chmod +x ${HOME}/.antigen/antigen.zsh
+rm -rf "$UV_CACHE_DIR"
+rm -rf "$UV_PYTHON_INSTALL_DIR"

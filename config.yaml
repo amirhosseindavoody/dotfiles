@@ -1,0 +1,28 @@
+backup_oh_my_zsh: false
+backup_zshrc: false
+custom_zshrc: oh_my_zshrc
+
+zsh_plugins:
+  - name: "fzf-tab"
+    repo: "https://github.com/Aloxaf/fzf-tab.git"
+  - name: "zsh-autosuggestions"
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+  - name: "zsh-syntax-highlighting"
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+  - name: "autoupdate"
+    repo: "https://github.com/TamCore/autoupdate-oh-my-zsh-plugins.git"
+
+pixi_packages:
+  - "zsh"
+  - "tmux"
+  - "just"
+  - "nnn"
+  - "micro"
+  - "fzf"
+  - "gh"
+  - "ruff"
+  - "ripgrep"
+  - "uv"
+
+additional_configs: []
+  
