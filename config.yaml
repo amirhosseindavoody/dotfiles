@@ -23,6 +23,7 @@ pixi_packages:
   - "ruff"
   - "ripgrep"
   - "uv"
+  - "cmake-format"
 
 additional_configs: []
   
